@@ -1,4 +1,4 @@
-document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+
 
 const saveIssue = (e) => {
     let issueDesc = document.getElementById('issueDescInput').value;
@@ -15,7 +15,7 @@ const saveIssue = (e) => {
         status: issueStatus
     }
 
-    if (localStorage.getItem('issues') == null) {
+    if (localStorage.getItem('issues') === null) {
         let issues = [];
         issues.push(issue);
         localStorage.setItem('issues', JSON.stringify(issues));
@@ -31,9 +31,39 @@ const saveIssue = (e) => {
     e.preventDefault();
 }
 
+
+document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+
+const setStatusClosed = (id) => {
+    let issues = JSON.parse(localStorage.getItem('issues'));
+    for (let i = 0; i < issues.length; i++) {
+      if (issues[i].id == id) {
+        issues[i].status = 'Closed';
+      }
+    }
+    
+    localStorage.setItem('issues', JSON.stringify(issues));
+    
+    fetchIssues();
+  }
+  
+  const deleteIssue = (id) => {
+    let issues = JSON.parse(localStorage.getItem('issues'));
+    for (let i = 0; i < issues.length; i++) {
+      if (issues[i].id == id) {
+        issues.splice(i, 1);
+      }
+    }
+    
+    localStorage.setItem('issues', JSON.stringify(issues));
+    
+    fetchIssues();
+  }
+
+
 const fetchIssues = () => {
     let issues = JSON.parse(localStorage.getItem('issues'));
-    let issuesList = document.getElementById('issuesList');
+    let issuesListe = document.getElementById('issuesList');
 
     issuesList.innerHTML = '';
 
@@ -46,12 +76,12 @@ const fetchIssues = () => {
 
         issuesList.innerHTML += '<div class="well">'+ 
                                 '<h6>Issue ID: ' + id + '</h6>'+
-                                '<p><span class="label label-info">' + status + '</span></p>'+
+                                '<p><span class="label label-info">' + '<strong>Status:</strong> ' + status + '</span></p>'+
                                 '<h3>' + desc + '</h3>'+
-                                '<p><span class="glyhicon glyphicon-time"></span>' + severity + '</p>'+
-                                '<p><span class="glyhicon glyphicon-user"></span>'+ assignedTo + '</p>'+
-                                '<a href="#" onclick="setStatusClosed(\''+id+'\')" class="btn btn-warning">Close</a>'+
-                                '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>'+
+                                '<p><span class="glyhicon glyphicon-time"></span>' + '<strong>Severity:</strong>  ' + severity + '</p>'+
+                                '<p><span class="glyhicon glyphicon-user"></span>'+ '<strong>Staff:</strong> ' + assignedTo + '</p>'+
+                                '<a href="#" onclick="setStatusClosed(\''+id+'\')" class="btn btn1">Close</a>'+
+                                '<a href="#" onclick="deleteIssue(\''+id+'\')" class="btn btn2">Delete</a>'+
                                 '</div>';
 
     }

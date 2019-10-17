@@ -1,6 +1,19 @@
-#jssissueInputForm {
+/* Form Input style */
+#issueInputForm {
     width: 80%;
     margin: auto;
+}
+
+.jumbotron {
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 14px 2px rgba(184,180,184,0.8);
+    -moz-box-shadow: 0px 0px 14px 2px rgba(184,180,184,0.8);
+    box-shadow: 0px 0px 14px 2px rgba(184,180,184,0.8);
+}
+
+.form-control {
+    border-radius: 25px;
 }
 
 .display-3 {
@@ -27,6 +40,46 @@ small{
     font-size: 16px;
 }
 
+/* button style */
+
+.btn {
+    margin: 5px;
+    border-radius: 25px;
+    width: 100%;
+}
+.btn1, .btn2 {
+    width: 60%;
+}
+.btn1 {
+    background: #0022bb;
+    color: #fff;
+
+}
+
+.btn2 {
+    background: crimson;
+    color: #fff;
+
+}
+
+
+/* js dynamic html */
+
+.well {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.822);
+    color: #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    -webkit-box-shadow: 0px 0px 14px 2px rgba(184,180,184,0.8);
+    -moz-box-shadow: 0px 0px 14px 2px rgba(184,180,184,0.8);
+    box-shadow: 0px 0px 14px 2px rgba(184,180,184,0.8);
+    
+}
+
+
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -34,7 +87,6 @@ small{
 
 @media (min-width: 1281px) {
   
-    //CSS
     
   }
   
@@ -45,7 +97,6 @@ small{
   
   @media (min-width: 1025px) and (max-width: 1280px) {
     
-    //CSS
     
   }
   
@@ -56,7 +107,7 @@ small{
   
   @media (min-width: 768px) and (max-width: 1024px) {
     
-    //CSS
+    
     
   }
   
